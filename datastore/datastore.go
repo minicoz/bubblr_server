@@ -54,8 +54,7 @@ func NewDB() (*Datastore, error) {
 
 	for i := 0; i < maxRetries; i++ {
 		log.Println("Trying to connect to db")
-		db, err := sql.Open("postgres", conn)
-		fmt.Println(err)
+		db, err := sql.Open("postgres", "postgresql://postgres:rOJvBSqtpXwiotUuwJtGJZqCMxpeqtgF@postgres.railway.internal:5432/railway")
 		if err == nil {
 			err = db.Ping()
 		}
