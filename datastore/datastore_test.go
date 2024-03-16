@@ -90,7 +90,7 @@ func dsntest(dbName string) string {
 		fmt.Println(string(bs))
 		panic("stopping!")
 	}
-	return fmt.Sprintf("postgresql://%s:%s@%s?sslmode=disable", user, password, hostname)
+	return fmt.Sprintf("postgresql://%s:%s@%s?sslmode=require", user, password, hostname)
 }
 
 func createOrReplaceDatabase(dbName string) (*DatastoreTest, error) {

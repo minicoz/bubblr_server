@@ -35,9 +35,9 @@ func dsn() string {
 		fmt.Println(string(bs))
 		panic("stopping!")
 	}
-	_ = fmt.Sprintf("postgresql://%s:%s@%s:%s/%s?sslmode=disable", user, password, hostname, port, dbName)
+	_ = fmt.Sprintf("postgresql://%s:%s@%s:%s/%s?sslmode=require", user, password, hostname, port, dbName)
 	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s "+
-		"password=%s dbname=%s sslmode=disable",
+		"password=%s dbname=%s sslmode=require",
 		hostname, port, user, password, dbName,
 	)
 	return psqlInfo

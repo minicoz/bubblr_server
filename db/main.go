@@ -22,9 +22,9 @@ func dsn() string {
 	hostname := os.Getenv("POSTGRES_HOST")
 	dbName := os.Getenv("POSTGRES_DB")
 	port := os.Getenv("POSTGRES_PORT")
-	_ = fmt.Sprintf("postgresql://%s:%s@%s/%s?sslmode=disable", user, password, hostname, dbName)
+	_ = fmt.Sprintf("postgresql://%s:%s@%s/%s?sslmode=require", user, password, hostname, dbName)
 	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s "+
-		"password=%s dbname=%s sslmode=disable",
+		"password=%s dbname=%s sslmode=require",
 		hostname, port, user, password, dbName,
 	)
 	return psqlInfo
