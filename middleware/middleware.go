@@ -50,7 +50,7 @@ func EnableCORS(next http.Handler) http.Handler {
 func JWTMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Exclude the signup endpoint from JWT verification
-		if r.URL.Path == "/" || r.URL.Path == "/signup" || r.URL.Path == "/login" || r.Method == "OPTIONS" {
+		if r.URL.Path == "/" || r.URL.Path == "/health" || r.URL.Path == "/signup" || r.URL.Path == "/login" || r.Method == "OPTIONS" {
 			next.ServeHTTP(w, r)
 			return
 		}
