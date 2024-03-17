@@ -9,6 +9,11 @@ import (
 	"github.com/gorilla/mux"
 )
 
+func hi(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprint(w, "Hi")
+}
+
 func healthCheckHandler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	fmt.Fprint(w, "OK healthy")
@@ -22,7 +27,8 @@ func Router(h *handler.Handler) *mux.Router {
 	r.Use(middleware.JWTMiddleware)
 	r.Use(middleware.LoggingMiddleware)
 
-	r.HandleFunc("/", healthCheckHandler).Methods("GET", "OPTIONS")
+	r.HandleFunc("/", hi).Methods("GET", "OPTIONS")
+	r.HandleFunc("/health", healthCheckHandler).Methods("GET", "OPTIONS")
 	r.HandleFunc("/login", h.Login).Methods("POST", "OPTIONS")
 	r.HandleFunc("/signup", h.Signup).Methods("POST", "OPTIONS")
 	r.HandleFunc("/user", h.GetUser).Methods("GET", "OPTIONS")
