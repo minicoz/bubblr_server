@@ -45,7 +45,8 @@ func dsn() string {
 
 // create connection with postgres db
 func NewDB() (*Datastore, error) {
-	conn := dsn()
+	_ = dsn()
+	conn := "postgresql://postgres:rOJvBSqtpXwiotUuwJtGJZqCMxpeqtgF@roundhouse.proxy.rlwy.net:39417/railway"
 	fmt.Printf("-----> \t%s \n", conn)
 
 	// Retry for a certain duration until the database is ready

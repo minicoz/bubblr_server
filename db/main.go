@@ -32,6 +32,7 @@ func dsn() string {
 
 func main() {
 	conn := dsn()
+	conn = "postgresql://postgres:rOJvBSqtpXwiotUuwJtGJZqCMxpeqtgF@roundhouse.proxy.rlwy.net:39417/railway"
 	db, err := sql.Open("postgres", conn)
 	if err != nil {
 		panic(err)
